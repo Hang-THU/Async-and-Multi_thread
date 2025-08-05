@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public class Book
 {
-    public string Title { get; set; }
+    public string? Title { get; set; }
     public decimal Price { get; set; }
     public int Inventory { get; set; }
 }
@@ -29,7 +29,24 @@ public class Database
     public async Task UpdateInventoryAsync(string title, int quantity)
     {
         await Task.Delay(100); // 模拟网络延迟
-
+        foreach (var book in _books)
+        {
+            if (book.Title == title)
+            {
+                lock (title)
+                {
+                    if (book.Inventory >= quantity)
+                    {
+                        book.Inventory -= quantity;
+                        Console.WriteLine($"成功购买 {quantity} 本《{book.Title}》，剩余库存：{book.Inventory}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"库存不足，无法购买 {quantity} 本《{book.Title}》，当前库存：{book.Inventory}");
+                    }
+                }
+            }
+        }
         // TODO: 使用 lock 语句保证线程安全
         // 提示：在 lock 块中查找书籍并更新库存，若库存不足则输出提示
     }
@@ -42,6 +59,11 @@ public class BookStore
     // TODO: 实现异步购书方法CheckoutAsync，调用 UpdateInventoryAsync
     public async Task CheckoutAsync(string bookTitle, int quantity)
     {
+
+        await _db.UpdateInventoryAsync(bookTitle, quantity);
+
+
+
     }
 
     public async Task SimulateMultipleUsers()
@@ -57,11 +79,17 @@ public class BookStore
 
         // TODO: 使用 Task.WhenAll 模拟多个用户并发购书
         // 提示：创建多个 Task 调用 CheckoutAsync，并传入不同书名和数量
+        Task Task1 = CheckoutAsync("C#入门", 2);
+        Task Task2 = CheckoutAsync("C#入门", 3);
+        Task Task3 = CheckoutAsync("异步编程", 1);
+        Task Task4 = CheckoutAsync("异步编程", 2);
+        Task Task5 = CheckoutAsync("异步编程", 3);
+
         var tasks = new List<Task>
         {
-            
+            Task1, Task2, Task3, Task4, Task5
         };
-
+        Task.WaitAll(tasks.ToArray());
 
         Console.WriteLine("\n购买后库存：");
         books = await _db.GetBooksAsync();
