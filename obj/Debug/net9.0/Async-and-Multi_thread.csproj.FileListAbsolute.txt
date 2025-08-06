@@ -1,0 +1,15 @@
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/bin/Debug/net9.0/Async-and-Multi_thread
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/bin/Debug/net9.0/Async-and-Multi_thread.deps.json
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/bin/Debug/net9.0/Async-and-Multi_thread.runtimeconfig.json
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/bin/Debug/net9.0/Async-and-Multi_thread.dll
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/bin/Debug/net9.0/Async-and-Multi_thread.pdb
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/obj/Debug/net9.0/Async-and-Multi_thread.GeneratedMSBuildEditorConfig.editorconfig
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/obj/Debug/net9.0/Async-and-Multi_thread.AssemblyInfoInputs.cache
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/obj/Debug/net9.0/Async-and-Multi_thread.AssemblyInfo.cs
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/obj/Debug/net9.0/Async-and-Multi_thread.csproj.CoreCompileInputs.cache
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/obj/Debug/net9.0/Async-and-Multi_thread.sourcelink.json
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/obj/Debug/net9.0/Async-and-Multi_thread.dll
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/obj/Debug/net9.0/refint/Async-and-Multi_thread.dll
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/obj/Debug/net9.0/Async-and-Multi_thread.pdb
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/obj/Debug/net9.0/Async-and-Multi_thread.genruntimeconfig.cache
+/home/enovo/projects/test/hw4/Async-and-Multi_thread/obj/Debug/net9.0/ref/Async-and-Multi_thread.dll
