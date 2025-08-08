@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -32,6 +32,19 @@ public class Database
 
         // TODO: 使用 lock 语句保证线程安全
         // 提示：在 lock 块中查找书籍并更新库存，若库存不足则输出提示
+        var book = _books.Find(x => x.Title == title);
+        lock (_lock)
+        {
+            if (book is not null && book.Inventory + quantity >= 0)
+            {
+                book.Inventory += quantity;
+            }
+            else
+            {
+                Console.WriteLine($"《{title}》不存在或库存不足。");
+            }
+
+        }
     }
 }
 
@@ -42,6 +55,7 @@ public class BookStore
     // TODO: 实现异步购书方法CheckoutAsync，调用 UpdateInventoryAsync
     public async Task CheckoutAsync(string bookTitle, int quantity)
     {
+        await _db.UpdateInventoryAsync(bookTitle, -quantity);
     }
 
     public async Task SimulateMultipleUsers()
@@ -59,8 +73,14 @@ public class BookStore
         // 提示：创建多个 Task 调用 CheckoutAsync，并传入不同书名和数量
         var tasks = new List<Task>
         {
-            
+            CheckoutAsync("C#入门", 2),
+            CheckoutAsync("C#入门", 3),
+            CheckoutAsync("异步编程", 1),
+            CheckoutAsync("异步编程", 2),
+            CheckoutAsync("异步编程", 3),
         };
+        //await Task.WhenAll(tasks.ToArray());
+        Task.WaitAll(tasks.ToArray());
 
 
         Console.WriteLine("\n购买后库存：");
